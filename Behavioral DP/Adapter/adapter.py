@@ -69,13 +69,12 @@ class Client:
 if __name__ == '__main__':
     # Usage
     json_to_xml_adapter = JsonToXmlAdapter()
-    xml_to_json_adapter = XmlToJsonAdapter()
-    
     client1 = Client(json_to_xml_adapter)
     json_data = JSON('{"key": "value"}')
     xml_data = client1.convert(json_data)
     print("XML Data:", xml_data)
     
+    xml_to_json_adapter = XmlToJsonAdapter()
     client2 = Client(xml_to_json_adapter)
     xml_data = XML('<xml><key>value</key></xml>')
     json_data = client2.convert(xml_data)
