@@ -6,6 +6,7 @@ class Pizza:
         self.mushrooms = builder.mushrooms
         self.onions = builder.onions
 
+    # The next methods are for checking only, pattern e kono dorkar nai tbh.
     def is_cheese(self) -> bool:
         return self.cheese
 
