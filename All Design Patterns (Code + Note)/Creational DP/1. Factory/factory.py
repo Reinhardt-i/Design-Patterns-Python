@@ -1,7 +1,7 @@
 import random
 
 
-# Abstract Factory
+# Abstract 1. Factory
 class AsteroidsFactory:
     def create_asteroids(self, score: int) -> "Asteroids":
         """
@@ -10,7 +10,7 @@ class AsteroidsFactory:
         raise NotImplementedError
 
 
-# Concrete Factory for Level 1
+# Concrete 1. Factory for Level 1
 class Level1AsteroidsFactory(AsteroidsFactory):
     def create_asteroids(self, score: int) -> "Asteroids":
         """
@@ -22,7 +22,7 @@ class Level1AsteroidsFactory(AsteroidsFactory):
             return IronAsteroids()
 
 
-# Concrete Factory for Level 2
+# Concrete 1. Factory for Level 2
 class Level2AsteroidsFactory(AsteroidsFactory):
     def create_asteroids(self, score: int) -> "Asteroids":
         """

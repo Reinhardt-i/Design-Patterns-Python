@@ -29,13 +29,15 @@ class FileProcessor(ABC):
         """
         pass
 
-    def open_file(self, file_path: str) -> None:
+    @staticmethod
+    def open_file(file_path: str) -> None:
         """
         Default method to open the file.
         """
         print("Opening file:", file_path)
 
-    def close_file(self) -> None:
+    @staticmethod
+    def close_file() -> None:
         """
         Default method to close the file.
         """

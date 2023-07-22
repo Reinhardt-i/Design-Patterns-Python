@@ -21,6 +21,6 @@ if __name__ == '__main__':
     print(session1.get_username())
 
     # Trying to create another database session
-    # Note: The same instance will be returned as per the Singleton pattern
+    # Note: The same instance will be returned as per the 3. Singleton pattern
     session2 = Database.get_database_instance("Mahir")
     print(session2.get_username())

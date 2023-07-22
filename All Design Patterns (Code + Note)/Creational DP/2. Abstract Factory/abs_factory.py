@@ -52,7 +52,7 @@ class StaticDebrisField(AbstractDebrisField):
         print("Static Debris Field appeared")
 
 
-# Abstract Factory: ObstacleFactory
+# Abstract 1. Factory: ObstacleFactory
 class ObstacleFactory(ABC):
     @abstractmethod
     def create_asteroid(self) -> AbstractAsteroid:
@@ -63,7 +63,7 @@ class ObstacleFactory(ABC):
         pass
 
 
-# Concrete Factory: Level1Factory
+# Concrete 1. Factory: Level1Factory
 class Level1Factory(ObstacleFactory):
     def create_asteroid(self) -> AbstractAsteroid:
         return IceAsteroid()
@@ -72,7 +72,7 @@ class Level1Factory(ObstacleFactory):
         return StaticDebrisField()
 
 
-# Concrete Factory: Level2Factory
+# Concrete 1. Factory: Level2Factory
 class Level2Factory(ObstacleFactory):
     def create_asteroid(self) -> AbstractAsteroid:
         return SiliconAsteroid()

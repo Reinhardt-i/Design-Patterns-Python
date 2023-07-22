@@ -91,7 +91,7 @@ if __name__ == '__main__':
     
     
 def print_visitor_pattern_description():
-        description = """
+    description = """
     The Visitor pattern allows you to define new operations on a collection of objects without modifying their classes. 
     It separates the algorithms (visitors) from the objects on which they operate (elements) by defining a common interface. 
     Elements accept visitors and delegate the appropriate operation to the visitor based on their type. This pattern is useful 

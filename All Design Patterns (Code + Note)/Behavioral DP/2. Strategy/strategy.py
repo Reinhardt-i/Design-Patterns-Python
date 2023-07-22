@@ -1,6 +1,6 @@
 from typing import List
 
-# Strategy interface
+# 2. Strategy interface
 class SortingStrategy:
     def sort(self, data: List[int]) -> List[int]:
         pass

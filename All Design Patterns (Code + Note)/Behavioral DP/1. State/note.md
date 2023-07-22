@@ -1,6 +1,6 @@
-----------------------------------------------------
 
-State Pattern Overview
+
+### State Pattern Overview
 
 The State pattern is a behavioral design pattern that allows an object to change its behavior when its internal state changes. It encapsulates different behaviors into separate state classes and enables the object to dynamically switch between these states at runtime.
 
@@ -24,4 +24,3 @@ Usage Examples
 - Implementing a state machine for a game character with different states (e.g., idle, walking, jumping).
 - Managing different states of a document editor (e.g., editing, saving, printing).
 
-----------------------------------------------------

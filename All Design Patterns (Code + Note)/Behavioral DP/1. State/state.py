@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-# State interface
+# 1. State interface
 class PackageState(ABC):
     @abstractmethod
     def next(self, delivery_package: 'DeliveryPackage') -> None:
