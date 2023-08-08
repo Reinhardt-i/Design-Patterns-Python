@@ -22,7 +22,7 @@ class Level1AsteroidsFactory(AsteroidsFactory):
             return IronAsteroids()
 
 
-# Concrete 1. Factory for Level 2
+# Concrete 2. Factory for Level 2
 class Level2AsteroidsFactory(AsteroidsFactory):
     def create_asteroids(self, score: int) -> "Asteroids":
         """
@@ -32,6 +32,32 @@ class Level2AsteroidsFactory(AsteroidsFactory):
             return RockyAsteroids()
         else:
             return SiliconAsteroids()
+        
+
+
+# New Concrete 3. Factory for Level 3
+class Level3AsteroidsFactory(AsteroidsFactory):
+    def create_asteroids(self, score: int) -> "Asteroids":
+        """
+        Create asteroids for Level 3 based on the score.
+        """
+        if score > 2000:
+            return FireAsteroids()
+        else:
+            return DiamondAsteroids()
+
+
+# New Concrete 4. Factory for Level 4
+class Level4AsteroidsFactory(AsteroidsFactory):
+    def create_asteroids(self, score: int) -> "Asteroids":
+        """
+        Create asteroids for Level 4 based on the score.
+        """
+        if score > 3000:
+            return MagneticAsteroids()
+        else:
+            return FireAsteroids()
+
 
 
 # Product Interface
@@ -79,15 +105,48 @@ class SiliconAsteroids(Asteroids):
         print("Silicon_Asteroids popped up")
 
 
+# New Concrete Product: Fire Asteroids
+class FireAsteroids(Asteroids):
+    def show(self) -> None:
+        """
+        Show message for Fire Asteroids.
+        """
+        print("Fire_Asteroids popped up")
+
+
+# New Concrete Product: Diamond Asteroids
+class DiamondAsteroids(Asteroids):
+    def show(self) -> None:
+        """
+        Show message for Diamond Asteroids.
+        """
+        print("Diamond_Asteroids popped up")
+
+
+# New Concrete Product: Magnetic Asteroids
+class MagneticAsteroids(Asteroids):
+    def show(self) -> None:
+        """
+        Show message for Magnetic Asteroids.
+        """
+        print("Magnetic_Asteroids popped up")
+
+
+
 if __name__ == "__main__":
-    level = random.randint(1, 2)
-    score = random.randint(0, 2000)
+    
+    level = random.randint(1, 4)
+    score = random.randint(0, 4000)
 
     # Create the appropriate factory based on the level
     if level == 1:
         asteroids_factory: AsteroidsFactory = Level1AsteroidsFactory()
-    else:
+    elif level == 2:
         asteroids_factory: AsteroidsFactory = Level2AsteroidsFactory()
+    elif level == 3:
+        asteroids_factory: AsteroidsFactory = Level3AsteroidsFactory()
+    else:
+        asteroids_factory: AsteroidsFactory = Level4AsteroidsFactory()
 
     # Create asteroids based on the score using the factory
     asteroids: Asteroids = asteroids_factory.create_asteroids(score)
