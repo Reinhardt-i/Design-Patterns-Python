@@ -8,7 +8,7 @@ class AbstractAsteroid(ABC):
         pass
 
 
-# Concrete Products: IceAsteroid, IronAsteroid, RockyAsteroid, SiliconAsteroid
+# Concrete Products: IceAsteroid, IronAsteroid, RockyAsteroid, SiliconAsteroid, DiamondAsteroid, GoldAsteroid, CrystalAsteroid
 class IceAsteroid(AbstractAsteroid):
     def show(self) -> None:
         print("Ice Asteroid popped up")
@@ -29,6 +29,21 @@ class SiliconAsteroid(AbstractAsteroid):
         print("Silicon Asteroid popped up")
 
 
+class DiamondAsteroid(AbstractAsteroid):
+    def show(self) -> None:
+        print("Diamond Asteroid popped up")
+
+
+class GoldAsteroid(AbstractAsteroid):
+    def show(self) -> None:
+        print("Gold Asteroid popped up")
+
+
+class CrystalAsteroid(AbstractAsteroid):
+    def show(self) -> None:
+        print("Crystal Asteroid popped up")
+
+
 # Abstract Product: Debris Fields
 class AbstractDebrisField(ABC):
     @abstractmethod
@@ -36,7 +51,7 @@ class AbstractDebrisField(ABC):
         pass
 
 
-# Concrete Products: DynamicDebrisField, PersistentDebrisField, StaticDebrisField
+# Concrete Products: DynamicDebrisField, PersistentDebrisField, StaticDebrisField, ExplosiveDebrisField, MagneticDebrisField, ToxicDebrisField
 class DynamicDebrisField(AbstractDebrisField):
     def show(self) -> None:
         print("Dynamic Debris Field appeared")
@@ -52,7 +67,22 @@ class StaticDebrisField(AbstractDebrisField):
         print("Static Debris Field appeared")
 
 
-# Abstract 1. Factory: ObstacleFactory
+class ExplosiveDebrisField(AbstractDebrisField):
+    def show(self) -> None:
+        print("Explosive Debris Field appeared")
+
+
+class MagneticDebrisField(AbstractDebrisField):
+    def show(self) -> None:
+        print("Magnetic Debris Field appeared")
+
+
+class ToxicDebrisField(AbstractDebrisField):
+    def show(self) -> None:
+        print("Toxic Debris Field appeared")
+
+
+# Abstract Factory: ObstacleFactory
 class ObstacleFactory(ABC):
     @abstractmethod
     def create_asteroid(self) -> AbstractAsteroid:
@@ -63,7 +93,7 @@ class ObstacleFactory(ABC):
         pass
 
 
-# Concrete 1. Factory: Level1Factory
+# Concrete Factories: Level1Factory, Level2Factory, Level3Factory, Level4Factory, Level5Factory
 class Level1Factory(ObstacleFactory):
     def create_asteroid(self) -> AbstractAsteroid:
         return IceAsteroid()
@@ -72,7 +102,6 @@ class Level1Factory(ObstacleFactory):
         return StaticDebrisField()
 
 
-# Concrete 1. Factory: Level2Factory
 class Level2Factory(ObstacleFactory):
     def create_asteroid(self) -> AbstractAsteroid:
         return SiliconAsteroid()
@@ -81,12 +110,36 @@ class Level2Factory(ObstacleFactory):
         return DynamicDebrisField()
 
 
+class Level3Factory(ObstacleFactory):
+    def create_asteroid(self) -> AbstractAsteroid:
+        return DiamondAsteroid()
+
+    def create_debris_field(self) -> AbstractDebrisField:
+        return ExplosiveDebrisField()
+
+
+class Level4Factory(ObstacleFactory):
+    def create_asteroid(self) -> AbstractAsteroid:
+        return GoldAsteroid()
+
+    def create_debris_field(self) -> AbstractDebrisField:
+        return MagneticDebrisField()
+
+
+class Level5Factory(ObstacleFactory):
+    def create_asteroid(self) -> AbstractAsteroid:
+        return CrystalAsteroid()
+
+    def create_debris_field(self) -> AbstractDebrisField:
+        return ToxicDebrisField()
+
+
 # Client
 if __name__ == "__main__":
     import random
 
     # Randomly select a level
-    level = random.randint(1, 2)
+    level = random.randint(1, 5)
 
     # Randomly generate a score
     score = random.randint(0, 2000)
@@ -94,8 +147,14 @@ if __name__ == "__main__":
     # Instantiate the appropriate factory based on the level
     if level == 1:
         factory = Level1Factory()
-    else:
+    elif level == 2:
         factory = Level2Factory()
+    elif level == 3:
+        factory = Level3Factory()
+    elif level == 4:
+        factory = Level4Factory()
+    else:
+        factory = Level5Factory()
 
     # Create an asteroid using the factory
     asteroid = factory.create_asteroid()
@@ -104,4 +163,3 @@ if __name__ == "__main__":
     # Create a debris field using the factory
     debris_field = factory.create_debris_field()
     debris_field.show()
-    
